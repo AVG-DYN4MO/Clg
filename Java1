@@ -1,0 +1,31 @@
+import java.util.Scanner;
+
+public class OddEvenFineCalculator {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int N = sc.nextInt();
+        int[] a = new int[N];
+
+        for (int i = 0; i < N; i++) {
+            a[i] = sc.nextInt();
+        }
+
+        int D = sc.nextInt();
+        int X = sc.nextInt();
+
+        int totalFine = 0;
+        boolean isDateOdd = D % 2 != 0;
+
+        for (int i = 0; i < N; i++) {
+            boolean isVehicleOdd = a[i] % 2 != 0;
+
+            if (isDateOdd && !isVehicleOdd || !isDateOdd && isVehicleOdd) {
+                totalFine += X;
+            }
+        }
+
+        System.out.println(totalFine);
+        sc.close();
+    }
+}
