@@ -4,28 +4,37 @@ public class OddEvenFineCalculator {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
+        // Reading the value of N (number of vehicles)
         int N = sc.nextInt();
         int[] a = new int[N];
 
+        // Reading the last digits of N vehicles' registration numbers
         for (int i = 0; i < N; i++) {
             a[i] = sc.nextInt();
         }
 
+        // Reading the value of D (the date) and X (the fine amount)
         int D = sc.nextInt();
         int X = sc.nextInt();
 
         int totalFine = 0;
+
+        // Determine if the date D is odd or even
         boolean isDateOdd = D % 2 != 0;
 
+        // Check each vehicle's last digit for violation
         for (int i = 0; i < N; i++) {
             boolean isVehicleOdd = a[i] % 2 != 0;
 
+            // If the vehicle violates the odd-even rule, fine it
             if (isDateOdd && !isVehicleOdd || !isDateOdd && isVehicleOdd) {
                 totalFine += X;
             }
         }
 
+        // Output the total fine collected
         System.out.println(totalFine);
+
         sc.close();
     }
 }
