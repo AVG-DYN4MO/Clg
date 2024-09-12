@@ -1,0 +1,41 @@
+import java.util.Scanner;
+
+public class Curtains {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Input string representing the curtains
+        String str = sc.nextLine();
+
+        // Length of string N and the size L of each box
+        int N = str.length();
+        int L = sc.nextInt();
+
+        // Variables to keep track of the maximum count of 'a' and the count in the current box
+        int maxAquaCount = 0;
+        int currentAquaCount = 0;
+
+        // Traverse the string and divide into boxes of length L
+        for (int i = 0; i < N; i += L) {
+            // Reset count for each box
+            currentAquaCount = 0;
+            
+            // Traverse each substring (box)
+            for (int j = i; j < i + L && j < N; j++) {
+                if (str.charAt(j) == 'a') {
+                    currentAquaCount++;
+                }
+            }
+
+            // Update maximum aqua count
+            if (currentAquaCount > maxAquaCount) {
+                maxAquaCount = currentAquaCount;
+            }
+        }
+
+        // Output the maximum number of 'a' (aqua) curtains in a labeled box
+        System.out.println(maxAquaCount);
+
+        sc.close();
+    }
+}
